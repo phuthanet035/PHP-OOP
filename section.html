@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP-OOP</title>
+    <style>
+        /* 🎨 CSS Reset & Base Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f8fafc;
+        }
+
+        /* 📦 Container จัดหน้าเว็บให้อยู่ตรงกลางสวยงาม */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* 🔤 Typography */
+        h1 {
+            color: #1e40af;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #b91c1c;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p {
+            color: #4b5563;
+            font-size: 1.05rem;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 40px 0;
+        }
+
+        /* 🗂 Main Menu (ปรับจากรายการจุดธรรมดาให้เป็นปุ่ม Tag สวยๆ) */
+        .menu-list {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .menu-list li a {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: #2563eb;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border: 1px solid #bfdbfe;
+        }
+
+        .menu-list li a:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            text-decoration: none;
+        }
+
+        /* 🔗 Workshop Links */
+        .workshop-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f0fdf4;
+            color: #16a34a;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid #bbf7d0;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+        }
+
+        .workshop-link:hover {
+            background-color: #16a34a;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* 💻 Code Block (เปลี่ยนเป็นสไตล์ Dark Mode สบายตาเหมือนในโปรแกรมเขียนโค้ด) */
+        pre {
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            border-left: #ef4444 6px solid;
+            line-height: 1.6;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 🔝 ปุ่ม Back to Top */
+        .top-link {
+            display: inline-block;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .top-link:hover {
+            color: #1e293b;
+            background-color: #e2e8f0;
+            text-decoration: none;
+        }
+
+        /* 🖼 Image Style */
+        .img-container {
+            margin: 20px 0;
+        }
+
+        img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 12px;
+            /* เปลี่ยนจากวงกลมเป็นเหลี่ยมมน ดูโมเดิร์นกว่า */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>PHP-OOP & HTML Guide</h1>
+        <p>Welcome to the PHP-OOP and HTML Study Space:</p>
+
+        <h2>Topics</h2>
+        <ul class="menu-list">
+            <li><a href="#PHP - What are Classes and Objects?">What Classes and Objects?</a></li>
+            <li><a href="#PHP OOP - Classes and Objects">Classes and Objects</a></li>
+            <li><a href="#PHP OOP - Constructor Method">Constructor Method</a></li>
+            <li><a href="#Paragraph">Paragraph</a></li>
+            <li><a href="#Text-Formatting">Text Formatting</a></li>
+            <li><a href="#Creating-Links">Creating Links</a></li>
+            <li><a href="#Lists">Lists (Ordered/Unordered)</a></li>
+            <li><a href="#Adding-Images">Adding Images</a></li>
+            <li><a href="#Creating-Tables">Creating Tables</a></li>
+            <li><a href="#HTML-Forms">HTML Forms</a></li>
+            <li><a href="#Semantic-HTML">Semantic HTML</a></li>
+            <li><a href="#Home-Work">งานเตรียมสอบ</a></li>
+            <li><a href="W16_01-ResponsiveWeb2_draft.html">ResponsiveWeb</a></li>
+            <li><a href="W16_02_Bootstrap.html">Bootstrap</a></li>
+        </ul>
+
+        <hr>
+
+        <h2 id="PHP - What are Classes and Objects?">What are Classes and Objects?</h2>
+        <pre>
+Class (คลาส): คือ "แบบแปลน" หรือ "แม่พิมพ์" ที่ยังไม่มีตัวตนอยู่จริง เป็นแค่การระบุว่าสิ่งนี้จะมีคุณลักษณะ (Properties) 
+อะไรบ้าง และทำอะไรได้ (Methods) บ้าง/Object (ออบเจกต์): คือ "ชิ้นงานจริง" ที่ถูกปั๊มออกมาจากแม่พิมพ์นั้นๆ 
+มีตัวตนอยู่จริงในหน่วยความจำ และสามารถมีมูลค่าของข้อมูลที่แตกต่างกันได้</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="PHP OOP - Classes and Objects">Classes and Objects</h2>
+        <p>Class คือ "แม่พิมพ์" หรือพิมพ์เขียว (Blueprint) ที่ทำหน้าที่บอกว่าสิ่งนี้จะมีหน้าตาและทำอะไรได้บ้าง
+            Object คือ "ชิ้นงานจริง" ที่ถูกสร้าง (ปั๊ม) ออกมาจากแม่พิมพ์นั้น เพื่อเอาไปใช้งานจริง
+            คำสั่ง new คือ ตัวกดปั๊มชิ้นงานออกมาจากแม่พิมพ์</p>
+        <pre>&lt;?php
+    class Fruit {
+        // Properties
+        public $name;
+        public $color;
+
+        // Method to set the properties
+        function set_details($name, $color) {
+        $this->name = $name;
+        $this->color = $color;
+        }
+
+        // Method to display the properties
+        function get_details() {
+        echo "Name: " . $this->name . ". Color: " . $this->color .".<br>";
+        }
+    }
+?&gt;</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="PHP OOP - Constructor Method">Constructor Method</h2>
+        <p>Constructor Method (ฟังก์ชันสร้างออบเจกต์) คือ ฟังก์ชันพิเศษในคลาสที่จะ "ทำงานโดยอัตโนมัติทันที"
+            เมื่อเราใช้คำสั่ง new เพื่อสร้าง Object ใหม่</p>
+        <a href="constructormethod.html" class="workshop-link">🛠️ Open Workshop</a>
+        <pre>
+        &lt;?php
+    class Fruit {
+        public $name;
+        public $color;
+
+        function __construct($name, $color) {
+        $this->name = $name;
+        $this->color = $color;
+        }
+
+        function get_details() {
+        echo "Name: " . $this->name . ". Color: " . $this->color .".<br>";
+            }
+        }
+
+        $apple = new Fruit('Apple', 'Red');
+        $apple->get_details();
+
+        $banana = new Fruit('Banana', 'Yellow');
+        $banana->get_details();
+        ?&gt;
+        </pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="Paragraph">Paragraph</h2>
+        <p>HTML paragraphs are defined with the p tag...</p>
+        <a href="W03_02_paragraph.html" class="workshop-link">🛠️ Open Workshop</a>
+        <pre>
+- &lt;p&gt;: ใช้สำหรับขึ้นย่อหน้าใหม่ (Paragraph) บราวเซอร์จะเว้นระยะบรรทัดให้อัตโนมัติ</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="Text-Formatting">Text Formatting</h2>
+        <p>HTML provides various elements to format text...</p>
+        <a href="W04_01_fromatting.html" class="workshop-link">🛠️ Open Workshop</a>
+        <pre>
+- &lt;b&gt; / &lt;strong&gt;: ตัวหนา / ข้อความสำคัญ
+- &lt;i&gt; / &lt;em&gt;: ตัวเอียง / เน้นข้อความ
+- &lt;u&gt; / &lt;ins&gt;: ขีดเส้นใต้ / ข้อความที่เพิ่มเข้ามาใหม่
+- &lt;del&gt; / &lt;s&gt;: ขีดฆ่าข้อความที่ถูกลบหรือไม่ใช้แล้ว
+- &lt;small&gt;: ตัวอักษรขนาดเล็ก
+- &lt;mark&gt;: ไฮไลท์ข้อความ (พื้นหลังสีเหลือง)
+- &lt;sub&gt;: ตัวห้อย (Subscript)
+- &lt;sup&gt;: ตัวยก (Superscript)
+- &lt;blockquote&gt;: อ้างอิงคำพูดแบบบล็อกย่อหน้า
+- &lt;code&gt;: แสดงโค้ดสั้นๆ โปรแกรมมิ่ง</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="Creating-Links">Creating Links</h2>
+        <p>HTML links are defined with the a tag...</p>
+        <a href="W05_01_link.html" class="workshop-link">🛠️ Open Workshop</a>
+        <pre>
+- &lt;a href="url" target=""&gt;Link text&lt;/a&gt;
+- Target Attributes:
+    - _self: เปิดในหน้าต่างเดิม (ค่าเริ่มต้น)
+    - _blank: เปิดในหน้าต่างใหม่/แท็บใหม่
+- Anchor links (ลิงก์ภายในหน้า):
+    - &lt;a href="#section"&gt;Go to Section&lt;/a&gt;
+- Email links:
+    - &lt;a href="mailto:support@example.com"&gt;Email Us&lt;/a&gt;
+- Download links:
+    - &lt;a href="file.txt" download&gt;Download File&lt;/a&gt;</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="Lists">Lists (Ordered and Unordered)</h2>
+        <p>HTML lists are defined with the ul, ol, and li tags...</p>
+        <a href="W06_01_lists.html" class="workshop-link">🛠️ Open Workshop</a>
+        <pre>
+- &lt;ul&gt;: Unordered list (รายการแบบไม่มีลำดับตัวเลข - ใช้จุดวงกลม/เหลี่ยม)
+- &lt;ol&gt;: Ordered list (รายการแบบเรียงลำดับ ตัวเลข/ตัวอักษร)
+- &lt;li&gt;: List item (สมาชิกในรายการ)
+
+List Style Examples:
+- &lt;ul style="list-style-type: square;"&gt;
+- &lt;ol type="A" start="3"&gt; (เริ่มที่ตัว C)
+- &lt;ol style="list-style-type: lower-roman;"&gt; (เลขโรมันพิมพ์เล็ก)</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="Adding-Images">Adding Images</h2>
+        <p>HTML images are defined with the img tag...</p>
+        <a href="W07_01_imge.html" class="workshop-link">🛠️ Open Workshop</a>
+        <pre>
+- &lt;img src="url" alt="description" width="300" height="200"&gt;
+- Flexbox Gallery Example:
+.gallery {
+    display: flex;
+    gap: 10px;
+}
+.gallery img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="Creating-Tables">Creating Tables</h2>
+        <p>HTML tables are defined with the table, tr, th, and td tags...</p>
+        <a href="W07_02_tables.html" class="workshop-link">🛠️ Open Workshop</a>
+        <pre>
+- &lt;table&gt;: ขอบเขตตารางทั้งหมด
+- &lt;tr&gt;: แถวของตาราง (Table Row)
+- &lt;th&gt;: หัวข้อคอลัมน์ (Table Header - ตัวหนาจัดกลาง)
+- &lt;td&gt;: ข้อมูลในช่องตาราง (Table Data)</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="HTML-Forms">HTML Forms</h2>
+        <p>HTML forms are used to collect user input...</p>
+        <a href="W08_01_forms.html" class="workshop-link">🛠️ Open Workshop</a>
+        <pre>
+หัวข้อเกี่ยวกับฟอร์ม:
+1. โครงสร้าง: &lt;form action="server.php" method="POST"&gt;
+2. ชนิดอินพุต: text, password, email, radio, checkbox, date, file
+3. กล่องข้อความใหญ่: &lt;textarea&gt;
+4. ตัวเลือกดรอปดาวน์: &lt;select&gt; และ &lt;option&gt;
+5. ป้ายกำกับอินพุต: &lt;label for="input_id"&gt; ช่วยเรื่องการกดและ Accessibility
+6. ตัวช่วย HTML5: placeholder (คำใบ้ข้อความ), required (บังคับกรอก)</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="Semantic-HTML">Semantic HTML</h2>
+        <p>Semantic HTML elements clearly define the content of a web page...</p>
+        <a href="W09_01_semantic.html" class="workshop-link">🛠️ Open Workshop</a>
+        <pre>
+แท็กบอกความหมายโครงสร้างเว็บ (ดีต่อ SEO และการอ่านโค้ด):
+- &lt;header&gt;: ส่วนหัวเว็บหรือหัวบทความ
+- &lt;nav&gt;: แถบเมนูนำทาง
+- &lt;section&gt;: การแบ่งเนื้อหาเป็นส่วนๆ
+- &lt;article&gt;: เนื้อหาอิสระ เช่น บล็อก ข่าว
+- &lt;aside&gt;: แถบด้านข้าง (Sidebar)
+- &lt;footer&gt;: ส่วนท้ายของหน้าเว็บ</pre>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="Home-Work">Home Work</h2>
+        <p>งานเตรียมสอบปลายภาค</p>
+        <a href="W08_01_test.html" class="workshop-link">📝 ไปที่หน้างานเตรียมสอบ</a>
+        <div class="img-container">
+            <img src="images/514025364_1382710952817462_7636983523176818248_n (1).jpg" alt="Exam Prep Document">
+        </div>
+        <a href="#" class="top-link">↑ Back to Top</a>
+        <hr>
+
+        <h2 id="ResponsiveWeb">Advanced Layouts</h2>
+        <p>คลิกลิงก์ด้านล่างเพื่อศึกษาต่อในหัวข้อการจัดหน้าเว็บขั้นสูง:</p>
+        <ul class="menu-list">
+            <li><a href="W16_01-ResponsiveWeb2_draft.html">🌐 Responsive Web Design</a></li>
+            <li><a href="W16_02_Bootstrap.html">⚡ Bootstrap Framework</a></li>
+        </ul>
+        <a href="#" class="top-link">↑ Back to Top</a>
+    </div>
+
+</body>
+
+</html>
