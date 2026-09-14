@@ -1,0 +1,88 @@
+[
+    {
+        "id": "R101",
+        "name": "Boardroom Alpha",
+        "type": "Executive Boardroom",
+        "capacity": 16,
+        "hourlyRate": 650,
+        "amenities": [
+            "4K Ultra-HD Display (75\")",
+            "Polycom Video Conference Bar",
+            "Glass Whiteboard",
+            "Wireless Presentation",
+            "High-Speed Wi-Fi 6",
+            "Air Purifier"
+        ],
+        "imageUrl": "https:\/\/images.unsplash.com\/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=800&q=80",
+        "description": "ห้องประชุมระดับผู้บริหาร บรรยากาศพรีเมียม เงียบสงบ พร้อมระบบวิดีโอคอนเฟอเรนซ์ระดับมืออาชีพ",
+        "minHours": 1
+    },
+    {
+        "id": "R102",
+        "name": "Innovation Pod B",
+        "type": "Team Collaboration",
+        "capacity": 8,
+        "hourlyRate": 420,
+        "amenities": [
+            "Interactive Touch Screen (55\")",
+            "Mobile Whiteboard",
+            "HDMI \/ Type-C Ports",
+            "Ergonomic Chairs",
+            "Power Stations"
+        ],
+        "imageUrl": "https:\/\/images.unsplash.com\/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+        "description": "ห้องทำงานกลุ่มขนาดกลาง เหมาะสำหรับ Brainstorming, Workshop ย่อย และการประชุมทีมประจำสัปดาห์",
+        "minHours": 1
+    },
+    {
+        "id": "R103",
+        "name": "Podcast & Studio Suite",
+        "type": "Audio \/ Media Studio",
+        "capacity": 4,
+        "hourlyRate": 550,
+        "amenities": [
+            "Acoustic Soundproofing Foam",
+            "Shure SM7B Microphones (x4)",
+            "RodeCaster Pro Audio Board",
+            "Elgato Key Lights",
+            "4K Streaming Cam"
+        ],
+        "imageUrl": "https:\/\/images.unsplash.com\/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80",
+        "description": "ห้องสตูดิโอบันทึกเสียงและพอดแคสต์แบบเก็บเสียง 100% พร้อมอุปกรณ์สตรีมมิงและบันทึกระดับ Broadcast",
+        "minHours": 2
+    },
+    {
+        "id": "R104",
+        "name": "Creative Workshop Hall",
+        "type": "Seminar & Workshop",
+        "capacity": 30,
+        "hourlyRate": 1200,
+        "amenities": [
+            "Dual Laser Projectors",
+            "Wireless Lavalier & Handheld Mics",
+            "Flexible Modular Desks",
+            "Stage Podium",
+            "Surround Sound System"
+        ],
+        "imageUrl": "https:\/\/images.unsplash.com\/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
+        "description": "ห้องสัมมนาและเวิร์กชอปขนาดใหญ่ สามารถปรับเปลี่ยนการจัดโต๊ะได้หลากหลายรูปแบบตามสไตล์งาน",
+        "minHours": 2
+    },
+    {
+        "id": "R105",
+        "name": "Private Focus Pod",
+        "type": "Single \/ Duo Focus",
+        "capacity": 2,
+        "hourlyRate": 180,
+        "amenities": [
+            "Active Noise Cancelling Shell",
+            "Adjustable Standing Desk",
+            "Webcam Light",
+            "USB-C Fast Charging",
+            "Ergonomic Stool"
+        ],
+        "imageUrl": "https:\/\/images.unsplash.com\/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=800&q=80",
+        "description": "ตู้ทำงานส่วนบุคคลสำหรับการสัมภาษณ์งานออนไลน์ โทรศัพท์คุยธุรกิจ หรือทำงานที่ต้องการสมาธิสูงสุด",
+        "minHours": 1
+    }
+]
