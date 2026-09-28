@@ -1,0 +1,514 @@
+/* ==========================================================================
+   SmartFridge - Cozy Minimalist & Eye-Friendly Stylesheet
+   ออกแบบพิเศษ: โทนสีอบอุ่น สบายตา นุ่มนวล สไตล์ Minimal Nordic & Earth Tones
+   เน้นความสบายสายตา อ่านง่าย ไม่ฉูดฉาด และดูน่าใช้งาน
+   ========================================================================== */
+
+:root {
+    /* 1. พื้นหลังและพื้นผิว: นุ่มนวล ไม่สว่างจ้า (Soft Warm Ivory & Paper) */
+    --color-bg: #f7f9f8;
+    --color-surface: #ffffff;
+    --color-surface-subtle: #f0f4f2;
+
+    /* 2. สีตัวอักษร: เทาเข้มชาร์โคลนุ่ม ไม่ใช่สีดำสนิทเพื่อถนอมสายตา */
+    --color-text-main: #243038;
+    --color-text-muted: #5e6f7d;
+    --color-text-light: #94a3b0;
+
+    /* 3. เส้นขอบ: ละมุน บางเบา */
+    --color-border: #e3eae6;
+    --color-border-hover: #cdd8d2;
+
+    /* 4. สีหลัก: เขียวใบชาเขียวมัทฉะ (Soothing Matcha Green) สื่อถึงธรรมชาติและความสด */
+    --brand-primary: #2d6a4f;
+    --brand-primary-hover: #22543d;
+    --brand-primary-light: #eff7f3;
+    --brand-primary-border: #c8e4d5;
+
+    /* 5. สีเตือนใกล้หมดอายุ: พีช-แอปริคอทละมุนตา (Soft Apricot Peach) สบายตา ไม่ใช้สีส้มนีออน */
+    --state-urgent-bg: #fffaf4;
+    --state-urgent-border: #fde5ce;
+    --state-urgent-text: #944615;
+    --state-urgent-accent: #c26725;
+
+    /* 6. สีเตือนหมดอายุ: ชมพูกุหลาบฝุ่นซอฟต์ (Dusty Rose Blush) สบายตา ไม่ใช้สีแดงสด */
+    --state-expired-bg: #fdf6f6;
+    --state-expired-border: #f9d8d8;
+    --state-expired-text: #9e3232;
+    --state-expired-accent: #bf4343;
+
+    /* 7. สีอาหารสดใหม่: เขียวมินต์นวล (Soft Herb Mint) */
+    --state-fresh-bg: #f2f8f5;
+    --state-fresh-border: #d4e8de;
+    --state-fresh-text: #2d6a4f;
+
+    /* รูปทรงขอบมน */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-pill: 9999px;
+
+    /* เงาฟุ้งนุ่มบางเบา */
+    --shadow-soft: 0 2px 6px rgba(36, 48, 56, 0.04);
+    --shadow-hover: 0 6px 16px rgba(36, 48, 56, 0.06);
+
+    --transition: all 0.22s ease-in-out;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Prompt', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    line-height: 1.65;
+    min-height: 100vh;
+    padding: 28px 18px 56px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Header Section
+   ========================================================================== */
+header {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-soft);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo {
+    font-size: 1.85rem;
+    background: var(--brand-primary-light);
+    border: 1px solid var(--brand-primary-border);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+}
+
+h1 {
+    font-family: 'Plus Jakarta Sans', 'Prompt', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    letter-spacing: -0.01em;
+}
+
+.subtitle {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.header-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-badge {
+    background: var(--color-surface-subtle);
+    border: 1px solid var(--color-border);
+    padding: 7px 15px;
+    border-radius: var(--radius-pill);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Alert Notification Banner
+   ========================================================================== */
+.alert-banner {
+    padding: 13px 18px;
+    border-radius: var(--radius-md);
+    margin-bottom: 22px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: var(--brand-primary-light);
+    border: 1px solid var(--brand-primary-border);
+    color: var(--brand-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ==========================================================================
+   Quick Summary Cards (Stats Grid)
+   ========================================================================== */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 26px;
+}
+
+.stat-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-border-hover);
+    transform: translateY(-1px);
+}
+
+.stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+}
+
+.stat-icon.total { background: #eef3f0; color: #3d5a49; }
+.stat-icon.urgent { background: #fdf3e7; color: #944615; }
+.stat-icon.expired { background: #fcedec; color: #9e3232; }
+
+.stat-val {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    line-height: 1.1;
+}
+
+.stat-lbl {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    margin-top: 3px;
+}
+
+/* ==========================================================================
+   Main 2-Column Layout
+   ========================================================================== */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+}
+
+@media (max-width: 860px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   Urgent Highlight Banner
+   ========================================================================== */
+.urgent-highlight {
+    background: var(--state-urgent-bg);
+    border: 1px solid var(--state-urgent-border);
+    border-radius: var(--radius-md);
+    padding: 15px 19px;
+    margin-bottom: 20px;
+}
+
+.urgent-highlight h3 {
+    color: var(--state-urgent-text);
+    font-size: 0.94rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.urgent-highlight p {
+    font-size: 0.88rem;
+    color: #833e14;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Food Items List
+   ========================================================================== */
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.section-title {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.section-meta {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+}
+
+.food-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.food-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: var(--transition);
+}
+
+.food-card:hover {
+    border-color: var(--color-border-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* การ์ดสถานะต่างๆ สีตุ่นละมุนตา */
+.food-card.urgent {
+    border-left: 4px solid var(--state-urgent-accent);
+    background: var(--state-urgent-bg);
+}
+
+.food-card.expired {
+    border-left: 4px solid var(--state-expired-accent);
+    background: var(--state-expired-bg);
+}
+
+.food-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.food-title {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.food-cat {
+    font-size: 0.72rem;
+    background: var(--color-surface-subtle);
+    border: 1px solid var(--color-border);
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.food-status {
+    font-size: 0.86rem;
+    margin-top: 4px;
+    color: #3b4953;
+    font-weight: 500;
+}
+
+.food-date {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.86rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-eat {
+    background: var(--color-surface-subtle);
+    color: var(--brand-primary);
+    border: 1px solid var(--brand-primary-border);
+}
+
+.btn-eat:hover {
+    background: var(--brand-primary);
+    color: #ffffff;
+    border-color: var(--brand-primary);
+}
+
+.btn-reset {
+    background: var(--color-surface-subtle);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    font-size: 0.8rem;
+    padding: 6px 13px;
+    border-radius: var(--radius-pill);
+}
+
+.btn-reset:hover {
+    background: #e2eae5;
+    color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   Sidebar: Form & OOP Cards
+   ========================================================================== */
+.sidebar-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 20px;
+}
+
+.sidebar-card h3 {
+    font-size: 0.96rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--color-text-main);
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.08);
+}
+
+.btn-submit {
+    width: 100%;
+    background: var(--brand-primary);
+    color: #ffffff;
+    padding: 10px;
+    margin-top: 4px;
+}
+
+.btn-submit:hover {
+    background: var(--brand-primary-hover);
+}
+
+.oop-note {
+    background: var(--color-surface-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 11px 13px;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin-bottom: 9px;
+}
+
+.oop-note:last-child {
+    margin-bottom: 0;
+}
+
+.oop-note strong {
+    color: var(--brand-primary);
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.82rem;
+}
+
+.oop-note code {
+    color: #235d46;
+    background: #e4eee9;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+    margin-top: 36px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--color-text-light);
+}
+
+footer strong {
+    color: var(--color-text-muted);
+}
