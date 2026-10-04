@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>รายงานสรุปการออกแบบและพัฒนาระบบ Smart IT Helpdesk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: A4;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+  
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Sarabun', 'Plus Jakarta Sans', sans-serif;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.6;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Plus Jakarta Sans', 'Sarabun', sans-serif;
+    color: #0f172a;
+    margin-top: 0;
+  }
+
+  .page-break {
+    page-break-after: always;
+  }
+
+  .no-break {
+    page-break-inside: avoid;
+  }
+
+  /* Cover Page */
+  .cover {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 20px;
+    border: 2px solid #3b82f6;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #f8fafc 0%, #eff6ff 100%);
+  }
+
+  .cover-header {
+    text-align: center;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #2563eb;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .cover-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1e3a8a;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .cover-subtitle {
+    font-size: 16px;
+    color: #475569;
+    font-weight: 500;
+  }
+
+  .cover-tech-stack {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+  }
+
+  .tech-pill {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #1e40af;
+  }
+
+  .cover-footer {
+    border-top: 1px solid #cbd5e1;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  /* Typography & Sections */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e40af;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title:first-of-type {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0 0 10px 0;
+    text-align: justify;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px 0;
+    font-size: 12px;
+  }
+
+  th {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 8px 10px;
+    border: 1px solid #1e3a8a;
+  }
+
+  td {
+    padding: 7px 10px;
+    border: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+
+  /* Cards & Callouts */
+  .callout {
+    background-color: #f0fdf4;
+    border-left: 4px solid #16a34a;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 12px;
+  }
+
+  .callout-blue {
+    background-color: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 12px;
+  }
+
+  .callout-amber {
+    background-color: #fffbeb;
+    border-left: 4px solid #d97706;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 12px;
+  }
+
+  .diagram-box {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 10px 0 16px 0;
+  }
+
+  .diagram-header {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .badge-open { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .badge-assigned { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+  .badge-progress { background: #e0e7ff; color: #3730a3; border: 1px solid #c7d2fe; }
+  .badge-resolved { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+  .badge-closed { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+
+  .code-block {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-family: Consolas, monospace;
+    font-size: 11px;
+    line-height: 1.4;
+    overflow-x: auto;
+    margin: 10px 0;
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- COVER PAGE -->
+  <!-- ============================================================ -->
+  <div class="cover page-break">
+    <div class="cover-header">
+      <span class="cover-badge">เอกสารสรุปโครงการและการออกแบบระบบ (System Design & Implementation)</span>
+      <h1 class="cover-title">Smart IT Helpdesk &amp; Notification System</h1>
+      <div class="cover-subtitle">
+        ระบบแจ้งซ่อมและติดตามสถานะงานซ่อมอุปกรณ์ไอทีอัจฉริยะ<br>
+        สถาปัตยกรรม Custom OOP PHP 8.2+ MVC (No Framework)
+      </div>
+
+      <div class="cover-tech-stack">
+        <span class="tech-pill">PHP 8.2+ Native OOP</span>
+        <span class="tech-pill">PSR-4 Autoloading</span>
+        <span class="tech-pill">PDO Database Singleton</span>
+        <span class="tech-pill">State Machine Pattern</span>
+        <span class="tech-pill">Observer Pattern</span>
+        <span class="tech-pill">LINE Messaging API</span>
+        <span class="tech-pill">Tailwind CSS</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin: 30px 0;">
+      <div style="display: inline-block; text-align: left; background: white; padding: 20px 30px; border-radius: 10px; border: 1px solid #bfdbfe; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+        <p style="margin: 4px 0;"><strong>รายวิชา:</strong> การออกแบบและพัฒนาเว็บขั้นสูง (Advanced Web Design &amp; Development)</p>
+        <p style="margin: 4px 0;"><strong>สาขาวิชา:</strong> เทคโนโลยีสารสนเทศ (Information Technology)</p>
+        <p style="margin: 4px 0;"><strong>ประเภทผลงาน:</strong> Mini Project — Full Stack Web Application</p>
+        <p style="margin: 4px 0;"><strong>สถานะการพัฒนา:</strong> ผ่านการทดสอบระดับ Automated Unit &amp; Integration Tests (29/29 รายการ)</p>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <div>
+        <strong>Smart IT Helpdesk System</strong> — Production Quality Edition
+      </div>
+      <div>
+        ตุลาคม 2026
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1: ARCHITECTURE OVERVIEW & ERD -->
+  <!-- ============================================================ -->
+  <div>
+    <h2 class="section-title">1. สถาปัตยกรรมระบบโดยรวม (System Architecture — Diagram 1)</h2>
+    <p>
+      ระบบถูกพัฒนาขึ้นตามแบบสถาปัตยกรรม <strong>Custom MVC (Model-View-Controller)</strong> บนภาษา <strong>PHP 8.2+</strong> โดยไม่พึ่งพา Framework ภายนอก (No Framework) เพื่อให้โครงสร้างโปรแกรมมีขนาดกะทัดรัด ทำงานได้อย่างรวดเร็ว และเป็นไปตามหลักการ <strong>Separation of Concerns</strong> อย่างเคร่งครัด แบ่งการทำงานออกเป็น 4 เลเยอร์หลัก:
+    </p>
+
+    <ul>
+      <li><strong>Client Layer:</strong> สร้าง UI ด้วย HTML5 และ Tailwind CSS ร่วมกับ JavaScript (Fetch API) เพื่อรองรับการอัปเดตข้อมูลแบบเรียลไทม์ (AJAX State Transition)</li>
+      <li><strong>Server Layer:</strong> แกนกลางแบบ OOP ประกอบด้วย Router, Middleware Pipeline (Auth / Role / CSRF), Controller Layer, Service Layer (รวม Business Rules), Repository Layer (Data Access), และ Event Dispatcher</li>
+      <li><strong>Data Layer:</strong> เชื่อมต่อฐานข้อมูล MySQL 8.0 / MariaDB ผ่าน PHP Data Objects (PDO) แบบ Singleton พร้อมระบบจัดเก็บไฟล์รูปภาพปลอดภัยนอก Document Root (<code>storage/uploads/</code>) และ Audit Trail (<code>status_logs</code>)</li>
+      <li><strong>External Services:</strong> เชื่อมต่อ LINE Messaging API ผ่าน Push Message cURL พร้อมระบบ Simulation Logger สำรอง</li>
+    </ul>
+
+    <h2 class="section-title">2. แบบจำลองความสัมพันธ์ข้อมูล (Entity Relationship Diagram — Diagram 2)</h2>
+    <p>
+      ฐานข้อมูลประกอบด้วย 6 ตารางหลักที่เชื่อมโยงกันด้วย Foreign Key Constraints เพื่อรักษาความสมบูรณ์ของข้อมูล (Referential Integrity):
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 18%;">ชื่อตาราง</th>
+          <th style="width: 32%;">คอลัมน์สำคัญ</th>
+          <th style="width: 20%;">ความสัมพันธ์ (Relations)</th>
+          <th style="width: 30%;">บทบาทและหน้าที่</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>users</strong></td>
+          <td><code>id, name, email, password_hash, role, line_user_id</code></td>
+          <td>1 : N กับ tickets, comments, status_logs</td>
+          <td>จัดเก็บข้อมูลผู้ใช้และกำหนดบทบาท (user, technician, admin) พร้อม LINE User ID สำหรับแจ้งเตือน</td>
+        </tr>
+        <tr>
+          <td><strong>categories</strong></td>
+          <td><code>id, name, description</code></td>
+          <td>1 : N กับ tickets</td>
+          <td>หมวดหมู่อุปกรณ์ (Hardware, Network, Printer, Software, AV Equipment)</td>
+        </tr>
+        <tr>
+          <td><strong>tickets</strong></td>
+          <td><code>id, user_id, category_id, technician_id, title, description, status, priority, resolved_at, closed_at</code></td>
+          <td>N : 1 กับ users, categories<br>1 : N กับ comments, status_logs<br>1 : 1 กับ ratings</td>
+          <td>ตารางหลักจัดเก็บใบแจ้งซ่อม สถานะปัจจุบัน ระดับความเร่งด่วน ช่างผู้รับผิดชอบ และประทับเวลา</td>
+        </tr>
+        <tr>
+          <td><strong>comments</strong></td>
+          <td><code>id, ticket_id, user_id, body, image_path, created_at</code></td>
+          <td>N : 1 กับ tickets, users</td>
+          <td>การสื่อสารแบบสองทางระหว่างผู้แจ้งซ่อมและช่าง พร้อมรูปภาพแนบประกอบ</td>
+        </tr>
+        <tr>
+          <td><strong>status_logs</strong></td>
+          <td><code>id, ticket_id, changed_by, from_status, to_status, note, created_at</code></td>
+          <td>N : 1 กับ tickets, users</td>
+          <td>Audit Trail บันทึกประวัติการเปลี่ยนสถานะทุกขั้นตอน ใครเป็นผู้เปลี่ยน จากสถานะใดไปสถานะใด พร้อมบันทึกเหตุผล</td>
+        </tr>
+        <tr>
+          <td><strong>ratings</strong></td>
+          <td><code>id, ticket_id, score (1-5), feedback, created_at</code></td>
+          <td>1 : 1 กับ tickets</td>
+          <td>ผลประเมินความพึงพอใจการบริการ (1-5 ดาว) พร้อมข้อเสนอแนะเมื่อผู้แจ้งยืนยันปิดงาน</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout-blue">
+      <strong>หลักความปลอดภัยของฐานข้อมูล:</strong> ทุกคำสั่ง SQL ใช้ Prepared Statements ร่วมกับ PDO ป้องกัน SQL Injection 100% และรหัสผ่านผู้ใช้เข้ารหัสด้วยฟังก์ชัน <code>password_hash()</code> อัลกอริทึม BCRYPT
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2: STATE MACHINE & RBAC -->
+  <!-- ============================================================ -->
+  <div>
+    <h2 class="section-title">3. วงจรสถานะงานซ่อม (Ticket State Machine — Diagram 3)</h2>
+    <p>
+      ระบบใช้กฎการเปลี่ยนสถานะ 5 ขั้นตอน โดยมี <code>TicketStatusService</code> ทำหน้าที่ตรวจสอบเงื่อนไขทางธุรกิจและสิทธิ์ของผู้กระทำอย่างเข้มงวด ควบคุมด้วย PHP 8.1+ Backed Enum:
+    </p>
+
+    <div class="diagram-box">
+      <div class="diagram-header">
+        <span>ผังการเคลื่อนที่ของสถานะ (State Transition Flow):</span>
+        <span style="color: #2563eb;">1-Way Strict Lifecycle with Controlled Revert</span>
+      </div>
+      <div style="text-align: center; padding: 15px 0; font-size: 13px;">
+        <span class="badge badge-open">1. Open (รับแจ้ง)</span>
+        &nbsp;&rarr;&nbsp;
+        <span class="badge badge-assigned">2. Assigned (มอบหมายช่าง)</span>
+        &nbsp;&rarr;&nbsp;
+        <span class="badge badge-progress">3. InProgress (กำลังซ่อม)</span>
+        &nbsp;&rarr;&nbsp;
+        <span class="badge badge-resolved">4. Resolved (ซ่อมเสร็จ)</span>
+        &nbsp;&rarr;&nbsp;
+        <span class="badge badge-closed">5. Closed (ปิดงานสมบูรณ์)</span>
+      </div>
+      <div style="font-size: 11px; color: #dc2626; text-align: center; border-top: 1px dashed #cbd5e1; padding-top: 6px;">
+        * กรณีผู้แจ้งไม่พึงพอใจผลงาน: <strong>Resolved &rarr; InProgress</strong> (Revert เพื่อส่งช่างเทคนิคแก้ไขต่อ พร้อมระบุเหตุผล)
+      </div>
+    </div>
+
+    <h3 style="font-size: 14px; margin-top: 16px; margin-bottom: 8px;">ตารางกฎการเปลี่ยนสถานะ (Transition Rules Matrix):</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>การเปลี่ยนสถานะ (From &rarr; To)</th>
+          <th>สิทธิ์ผู้ดำเนินการ (Allowed Role)</th>
+          <th>เงื่อนไขและข้อกำหนดบังคับ (Required Action)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-open">Open</span> &rarr; <span class="badge badge-assigned">Assigned</span></td>
+          <td><strong>Admin IT</strong> เท่านั้น</td>
+          <td>ต้องระบุ <code>technician_id</code> เพื่อมอบหมายงานให้ช่างที่รับผิดชอบ</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-assigned">Assigned</span> &rarr; <span class="badge badge-progress">InProgress</span></td>
+          <td><strong>ช่างเทคนิคที่ได้รับมอบหมาย</strong></td>
+          <td>ช่างกดรับงาน พร้อมบันทึกข้อความเริ่มต้นเข้าตรวจซ่อมอุปกรณ์</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-progress">InProgress</span> &rarr; <span class="badge badge-resolved">Resolved</span></td>
+          <td><strong>ช่างเทคนิคผู้ดูแลงาน</strong></td>
+          <td><strong>บังคับแนบรูปถ่ายผลการซ่อม (Repair Result Photo)</strong> และอธิบายวิธีแก้ไขปัญหา</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-resolved">Resolved</span> &rarr; <span class="badge badge-closed">Closed</span></td>
+          <td><strong>ผู้แจ้งซ่อม (Ticket Owner)</strong></td>
+          <td>ประเมินความพึงพอใจ (1-5 ดาว) พร้อมข้อเสนอแนะเพื่อปิดงานอย่างสมบูรณ์</td>
+        </tr>
+        <tr style="background: #fff1f2;">
+          <td style="color: #be123c;"><strong>Resolved &rarr; InProgress</strong> (ส่งแก้)</td>
+          <td><strong>ผู้แจ้งซ่อม (Ticket Owner)</strong></td>
+          <td>ระบุเหตุผลที่งานยังไม่เรียบร้อย เพื่อส่งเรื่องให้ช่างเข้าตรวจสอบแก้ไขซ้ำ</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">4. การควบคุมสิทธิ์ตามบทบาทผู้ใช้ (Use Case &amp; RBAC — Diagram 4)</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px;">
+      <div style="border: 1px solid #bfdbfe; border-radius: 8px; padding: 12px; background: #f8fafc;">
+        <h4 style="color: #1d4ed8; margin-bottom: 6px; font-size: 13px;">👤 ผู้ใช้งานทั่วไป (User)</h4>
+        <ul style="padding-left: 18px; margin: 0; font-size: 11.5px;">
+          <li>สร้างคำขอแจ้งซ่อม (Create Ticket)</li>
+          <li>แนบรูปถ่ายอาการเสียของอุปกรณ์</li>
+          <li>ติดตามสถานะงานของตนเอง 5 ขั้นตอน</li>
+          <li>สนทนา/ซักถามผ่านระบบคอมเมนต์</li>
+          <li>ตรวจสอบผลงานและประเมิน 1-5 ดาว</li>
+          <li>ส่งแก้ไขงานซ่อมกรณีอุปกรณ์ยังเสีย</li>
+        </ul>
+      </div>
+
+      <div style="border: 1px solid #fde68a; border-radius: 8px; padding: 12px; background: #f8fafc;">
+        <h4 style="color: #b45309; margin-bottom: 6px; font-size: 13px;">🔧 ช่างเทคนิค (Technician)</h4>
+        <ul style="padding-left: 18px; margin: 0; font-size: 11.5px;">
+          <li>ดูงานทั้งหมด / งานที่ได้รับมอบหมาย</li>
+          <li>กดรับงานซ่อม (Assigned &rarr; InProgress)</li>
+          <li>รายงานความคืบหน้าผ่านคอมเมนต์</li>
+          <li>บันทึกซ่อมเสร็จ (InProgress &rarr; Resolved)</li>
+          <li><strong>แนบรูปภาพผลการซ่อมตามระเบียบ</strong></li>
+          <li>ดูสถิติและคะแนนดาวผลงานตนเอง</li>
+        </ul>
+      </div>
+
+      <div style="border: 1px solid #e9d5ff; border-radius: 8px; padding: 12px; background: #f8fafc;">
+        <h4 style="color: #7e22ce; margin-bottom: 6px; font-size: 13px;">👑 ผู้ดูแลระบบ (Admin IT)</h4>
+        <ul style="padding-left: 18px; margin: 0; font-size: 11.5px;">
+          <li>มอบหมายงานให้ช่าง (Assign Tech)</li>
+          <li>จัดการผู้ใช้งานในระบบ (เพิ่ม/แก้บทบาท)</li>
+          <li>จัดการหมวดหมู่อุปกรณ์แจ้งซ่อม</li>
+          <li>แดชบอร์ดสถิติ KPI, SLA, Donut Chart</li>
+          <li>ตารางจัดอันดับช่างเทคนิคดีเด่น</li>
+          <li>ตรวจสอบประวัติแจ้งเตือน LINE Logs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Middleware Pipeline:</strong> ทุกคำขอที่ส่งเข้ามาจะถูกส่งผ่าน Pipeline: <code>AuthMiddleware</code> &rarr; <code>RoleMiddleware</code> &rarr; <code>CsrfMiddleware</code> ตรวจสอบ Token อย่างเคร่งครัด ป้องกัน CSRF Attacks และการเข้าถึงข้อมูลโดยไม่ได้รับอนุญาต
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3: CLASS DESIGN & DESIGN PATTERNS -->
+  <!-- ============================================================ -->
+  <div>
+    <h2 class="section-title">5. โครงสร้างคลาสและ Design Patterns (Class Diagram — Diagram 5)</h2>
+    <p>
+      ระบบประยุกต์ใช้ <strong>Software Design Patterns</strong> ระดับมืออาชีพ เพื่อให้โค้ดสามารถทดสอบได้ง่าย (Testable), บำรุงรักษาง่าย (Maintainable) และขยายขีดความสามารถได้ในอนาคต (Extensible):
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Design Pattern</th>
+          <th style="width: 30%;">คลาสที่นำไปใช้งาน</th>
+          <th style="width: 45%;">ประโยชน์และความสำคัญเชิงสถาปัตยกรรม</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Singleton Pattern</strong></td>
+          <td><code>App\Core\Database</code></td>
+          <td>ควบคุมให้มี Connection Pool ของ PDO เพียง Instance เดียวตลอด Request Lifecycle ประหยัดหน่วยความจำและป้องกัน Connection รั่วไหล</td>
+        </tr>
+        <tr>
+          <td><strong>Repository Pattern</strong></td>
+          <td>
+            <code>RepositoryInterface</code><br>
+            <code>BaseRepository</code><br>
+            <code>TicketRepository</code>, <code>UserRepository</code>
+          </td>
+          <td>แยกชั้นการเข้าถึงฐานข้อมูล (Data Access) ออกจาก Business Logic ทำให้ Controller ไม่ต้องเขียน Raw SQL โดยตรง และเปลี่ยนฐานข้อมูลได้ง่าย</td>
+        </tr>
+        <tr>
+          <td><strong>Service Layer Pattern</strong></td>
+          <td>
+            <code>TicketStatusService</code><br>
+            <code>TicketService</code><br>
+            <code>DashboardService</code>
+          </td>
+          <td>รวบรวม Business Rules ที่ซับซ้อน เช่น การเปลี่ยนสถานะตาม State Machine, การเปิด-ปิด Database Transactions, และการคำนวณสถิติ SLA</td>
+        </tr>
+        <tr>
+          <td><strong>Observer Pattern</strong></td>
+          <td>
+            <code>EventDispatcher</code><br>
+            <code>TicketObserver</code>
+          </td>
+          <td>ลดการผูกมัดของโค้ด (Decoupling) เมื่อมีตั๋วใหม่หรือสถานะเปลี่ยน Service จะ Dispatch Event ออกไปให้ Observer ส่งแจ้งเตือนอัตโนมัติ</td>
+        </tr>
+        <tr>
+          <td><strong>Strategy Pattern</strong></td>
+          <td>
+            <code>NotificationChannelInterface</code><br>
+            <code>LineMessagingService</code>
+          </td>
+          <td>ช่องทางการแจ้งเตือนถูกออกแบบผ่าน Interface ทำให้สามารถเพิ่มช่องทางอื่นในอนาคตได้ เช่น Email, Discord, หรือ SMS โดยไม่ต้องแก้โค้ดเดิม</td>
+        </tr>
+        <tr>
+          <td><strong>Backed Enums (PHP 8.1+)</strong></td>
+          <td>
+            <code>TicketStatus</code>, <code>TicketPriority</code>, <code>UserRole</code>
+          </td>
+          <td>Type-Safe Enums ป้องกันข้อผิดพลาดจากการพิมพ์ String ผิดพลาด พร้อมมี Method ในตัว เช่น สี Badge และลำดับ Step ในตัว</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">6. แดชบอร์ดสถิติผู้ดูแลระบบ (Admin Dashboard Analytics — Diagram 6.3)</h2>
+    <p>
+      <code>DashboardService</code> รวบรวมข้อมูลเชิงวิเคราะห์ (Aggregated Queries) จากฐานข้อมูลเพื่อนำเสนอแก่ผู้บริหารและทีม IT Helpdesk:
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0;">
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 10px; text-align: center;">
+        <div style="font-size: 11px; color: #1e40af; font-weight: 600;">งานแจ้งซ่อมทั้งหมด</div>
+        <div style="font-size: 20px; font-weight: 800; color: #1e3a8a; margin-top: 4px;">Total Tickets</div>
+        <div style="font-size: 10px; color: #64748b;">รวมทุกสถานะงาน</div>
+      </div>
+      <div style="background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 8px; padding: 10px; text-align: center;">
+        <div style="font-size: 11px; color: #4338ca; font-weight: 600;">กำลังซ่อมแซม</div>
+        <div style="font-size: 20px; font-weight: 800; color: #3730a3; margin-top: 4px;">In Progress</div>
+        <div style="font-size: 10px; color: #64748b;">ช่างกำลังปฏิบัติงาน</div>
+      </div>
+      <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 10px; text-align: center;">
+        <div style="font-size: 11px; color: #065f46; font-weight: 600;">เวลาซ่อมเฉลี่ย (SLA)</div>
+        <div style="font-size: 20px; font-weight: 800; color: #047857; margin-top: 4px;">Avg Hours</div>
+        <div style="font-size: 10px; color: #64748b;">คำนวณจาก resolved_at</div>
+      </div>
+      <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px; text-align: center;">
+        <div style="font-size: 11px; color: #92400e; font-weight: 600;">ความพึงพอใจเฉลี่ย</div>
+        <div style="font-size: 20px; font-weight: 800; color: #b45309; margin-top: 4px;">★ 4.8 / 5.0</div>
+        <div style="font-size: 10px; color: #64748b;">จากตาราง ratings</div>
+      </div>
+    </div>
+
+    <ul>
+      <li><strong>Status Distribution Donut Chart:</strong> แผนภูมิวงกลมแสดงสัดส่วน Open, Assigned, InProgress, Resolved/Closed ผ่าน Chart.js</li>
+      <li><strong>Top Technicians Leaderboard:</strong> ตารางจัดอันดับช่างเทคนิคยอดเยี่ยม เรียงตามจำนวนงานที่ปิดสำเร็จและคะแนนดาวเฉลี่ย</li>
+      <li><strong>Recent System Activity Logs:</strong> บันทึกกิจกรรมระบบ 8 รายการล่าสุด ดึงข้อมูลแบบเรียลไทม์จาก <code>status_logs</code></li>
+    </ul>
+
+    <h2 class="section-title">7. การแจ้งเตือนผ่าน LINE Messaging API</h2>
+    <p>
+      ระบบออกแบบให้รองรับทั้งโหมด <strong>Production</strong> (ยิง cURL Push Message ไปยัง LINE Platform จริงเมื่อใส่ Channel Access Token ใน <code>.env</code>) และโหมด <strong>Simulation Mock Mode</strong> (เมื่อยังไม่ได้ใส่ Token ระบบจะบันทึก Payload เข้าสู่ <code>storage/logs/line_notifications.log</code> โดยอัตโนมัติเพื่อให้นักศึกษาและอาจารย์ตรวจสอบข้อความแจ้งเตือนได้ทันทีผ่านหน้าเว็บ "LINE Logs")
+    </p>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 4: TESTING & MANUAL -->
+  <!-- ============================================================ -->
+  <div>
+    <h2 class="section-title">8. ผลการทดสอบระบบ (Automated Quality Assurance)</h2>
+    <p>
+      ระบบได้รับการทดสอบความถูกต้องผ่านชุดทดสอบอัตโนมัติ <code>test_system.php</code> ครอบคลุมทุกเลเยอร์สำคัญของโปรแกรม:
+    </p>
+
+    <div class="code-block">
+=== STARTING COMPREHENSIVE SYSTEM TESTS ===
+
+  [PASS] Database::getInstance() returns singleton instance
+  [PASS] Admin user loaded with role 'admin'
+  [PASS] Technician user loaded with role 'technician'
+  [PASS] User loaded with role 'user'
+  [PASS] Auth::login() validates password_hash correctly
+  [PASS] Auth::isAdmin() returns true for admin
+  [PASS] TicketService::createTicket() inserted new ticket
+  [PASS] New ticket has initial status 'Open'
+  [PASS] New ticket has priority 'Urgent'
+  [PASS] Transition Open -> Assigned by Admin successful
+  [PASS] Ticket status is now 'Assigned'
+  [PASS] Ticket assigned to technician #2
+  [PASS] Transition Assigned -> InProgress by Assigned Tech successful
+  [PASS] Ticket status is now 'InProgress'
+  [PASS] Transition InProgress -> Resolved with required photo successful
+  [PASS] Ticket status is now 'Resolved'
+  [PASS] resolved_at timestamp set properly
+  [PASS] Transition Resolved -> Closed by Ticket Owner with rating successful
+  [PASS] Ticket status is now 'Closed'
+  [PASS] closed_at timestamp set properly
+  [PASS] Rating record saved with 5 stars
+  [PASS] Resolved ticket successfully reverted to 'InProgress' on rejection
+  [PASS] resolved_at cleared on rejection
+  [PASS] State Machine blocks illegal transition (Open -> Resolved)
+  [PASS] Status audit logs recorded all transitions
+  [PASS] LINE notifications recorded in log file via TicketObserver
+  [PASS] Dashboard reflects accurate total tickets
+  [PASS] Dashboard counts tickets by status
+  [PASS] Dashboard computes average satisfaction rating
+
+============================================
+ TEST SUMMARY: 29 PASSED, 0 FAILED (100% PASS RATE)
+============================================
+    </div>
+
+    <h2 class="section-title">9. บัญชีผู้ใช้งานเริ่มต้นสำหรับทดสอบ (Demo Accounts)</h2>
+    <p>
+      ระบบได้จัดเตรียมบัญชีตัวอย่างครบทั้ง 3 บทบาท พร้อมข้อมูลเริ่มต้นเพื่อให้พร้อมสาธิตการใช้งานได้ทันที (รหัสผ่านเริ่มต้นของทุกบัญชีคือ <code>password123</code>):
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>บทบาท (Role)</th>
+          <th>อีเมล (Email)</th>
+          <th>รหัสผ่าน</th>
+          <th>สิทธิ์ในการทดสอบ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>👑 <strong>Admin IT</strong></td>
+          <td><code>admin@helpdesk.com</code></td>
+          <td><code>password123</code></td>
+          <td>แดชบอร์ดสถิติ, มอบหมายงานให้ช่าง, จัดการผู้ใช้/หมวดหมู่</td>
+        </tr>
+        <tr>
+          <td>🔧 <strong>Senior Tech</strong></td>
+          <td><code>tech@helpdesk.com</code></td>
+          <td><code>password123</code></td>
+          <td>ดูงานมอบหมาย, กดรับงาน, บันทึกผลซ่อมเสร็จพร้อมแนบรูปถ่าย</td>
+        </tr>
+        <tr>
+          <td>🔧 <strong>Network Tech</strong></td>
+          <td><code>surachai@helpdesk.com</code></td>
+          <td><code>password123</code></td>
+          <td>รับงานซ่อมระบบเน็ตเวิร์กและอินเทอร์เน็ต</td>
+        </tr>
+        <tr>
+          <td>👤 <strong>General User</strong></td>
+          <td><code>user@helpdesk.com</code></td>
+          <td><code>password123</code></td>
+          <td>สร้างคำขอแจ้งซ่อม, ติดตามสถานะ, ปิดงานและให้คะแนน 1-5 ดาว</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      💡 <strong>ฟีเจอร์ Quick Role Switcher:</strong> ที่แถบเมนูด้านบนสุดของหน้าเว็บ มีปุ่มสำหรับคลิกสลับบทบาทระหว่าง Admin IT, Technician, และ General User ได้ทันทีใน 1 คลิก สะดวกอย่างยิ่งสำหรับการสาธิตการทำงานของ State Machine ต่อคณะกรรมการ
+    </div>
+
+    <h2 class="section-title">10. ขั้นตอนการรันใช้งานระบบ (Deployment Guide)</h2>
+    <ol style="padding-left: 20px; line-height: 1.8;">
+      <li><strong>เริ่มต้นเซิร์ฟเวอร์ MySQL:</strong> เปิดโปรแกรม XAMPP Control Panel และกดปุ่ม <strong>Start</strong> ที่โมดูล MySQL</li>
+      <li><strong>เริ่มเซิร์ฟเวอร์ PHP:</strong> ดับเบิ้ลคลิกไฟล์ <code>run_server.bat</code> ในโฟลเดอร์โปรเจกต์</li>
+      <li><strong>เข้าใช้งานระบบ:</strong> เปิดเว็บเบราว์เซอร์แล้วเข้าสู่ URL: <code style="font-weight: bold; color: #2563eb;">http://localhost:8080</code></li>
+      <li><strong>การทดสอบระบบอัตโนมัติ:</strong> เปิด Terminal แล้วรันคำสั่ง <code>php test_system.php</code></li>
+      <li><strong>การรีเซ็ตข้อมูลเริ่มต้น:</strong> รันคำสั่ง <code>php init_db.php</code> เพื่อล้างและติดตั้งฐานข้อมูลเริ่มต้นใหม่เมื่อใดก็ได้</li>
+    </ol>
+  </div>
+
+</body>
+</html>
